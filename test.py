@@ -7,3 +7,4 @@ x - 9
 
 Added for the ne w branch
 Conflict
+change first the username and email
