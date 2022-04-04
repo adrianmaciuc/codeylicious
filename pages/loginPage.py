@@ -26,7 +26,7 @@ class LoginPage(BasePage):
 
     def screenshot(self):
         date_time = time.strftime("%a.%d.%b.%Y.%H%M%S")
-        self.browser.save_screenshot(f"Resources\\{date_time}.png")
+        self.browser.save_screenshot(f"{Config.SS_FOLDER}{date_time}.png")
 
     def get_driver(self):
         return self.browser

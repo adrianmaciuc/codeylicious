@@ -2,7 +2,7 @@ import os
 
 class Config:
     DRIVER_PATH = os.getcwd() + "\\resources"
-    SS_FOLDER = os.getcwd() + "\\resources\\screenshots"
+    SS_FOLDER = "resources\\screenshots\\"
     BROWSER_TYPE = "Chrome"
     USERNAME = "user@phptravels.com"
     USERNAME_ADMIN = "admin@phptravels.com"
