@@ -33,7 +33,7 @@ class LoginPage(BasePage):
 
 
 if __name__ == "__main__":
-    # For module testing run from Root folder (ex python Pages\loginPage.py)
+    # For module testing run from Root folder (ex python pages\loginPage.py)
     login_page = LoginPage(Config)
     login_page.load()
     assert login_page.browser.title == "Login - PHPTRAVELS" , "opening of login page failed"

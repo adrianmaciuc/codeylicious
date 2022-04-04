@@ -1,5 +1,4 @@
 from selenium import webdriver
-
 from tests.conftest import Config
 
 
