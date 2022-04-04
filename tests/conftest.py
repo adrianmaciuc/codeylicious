@@ -1,6 +1,6 @@
 import os
 
-class Config:
+class ConfigC:
     DRIVER_PATH = os.getcwd() + "\\resources"
     SS_FOLDER = "resources\\screenshots\\"
     BROWSER_TYPE = "Chrome"
@@ -10,9 +10,8 @@ class Config:
     PASSWORD_ADMIN = "demoadmin"
     REDIRECT_AFTER_LOGIN_PAGE = "https://www.phptravels.net/account/dashboard"
 
-class Config2:
+class ConfigE:
     DRIVER_PATH = os.getcwd() + "\\resources"
     BROWSER_TYPE = "Edge"
     USERNAME = "user@phptravels.com"
     PASSWORD = "demouser"
-    REDIRECT_AFTER_LOGIN_PAGE = "https://www.phptravels.net/account/dashboard"

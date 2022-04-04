@@ -1,9 +1,9 @@
 import time
 from selenium.webdriver.common.by import By
 
-from tests.conftest import Config
 from pages.basePage import BasePage
 
+# ADI
 
 class LoginPage(BasePage):
     URL = "https://www.phptravels.net/login"
@@ -11,6 +11,7 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = (By.NAME, "password")
     LOGIN_BTN = (By.CSS_SELECTOR, ".btn-default.btn-lg")
     REDIRECT_AFTER_LOGIN_PAGE = "https://www.phptravels.net/account/dashboard"
+    CONTACT_BTN = (By.CSS_SELECTOR, "a.icon-box")
 
     def load(self):
         self.browser.get(LoginPage.URL)
@@ -26,7 +27,7 @@ class LoginPage(BasePage):
 
     def screenshot(self):
         date_time = time.strftime("%a.%d.%b.%Y.%H%M%S")
-        self.browser.save_screenshot(f"{Config.SS_FOLDER}{date_time}.png")
+        self.browser.save_screenshot(f"resources\\screenshots\\{date_time}.png")
 
     def get_driver(self):
         return self.browser
