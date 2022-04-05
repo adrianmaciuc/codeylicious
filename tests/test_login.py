@@ -13,7 +13,7 @@ class Test_login():
 
     def test_login_front_end_user(self):
         self.login_page.load()
-        self.login_page.login(LoginPage.USERNAME, LoginPage.PASSWORD)  
+        self.login_page.login(ConfigC.USERNAME, ConfigC.PASSWORD)  
         self.login_page.screenshot()
         assert self.login_page.browser.current_url == LoginPage.REDIRECT_AFTER_LOGIN_PAGE
 
