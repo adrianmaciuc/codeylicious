@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import time
 from datetime import datetime
 from selenium.webdriver.common.by import By
@@ -14,7 +13,7 @@ class VisaPage(BasePage):
     TO_COUNTRY_DROPDOWN = (By.ID, "select2-to_country-container")
     COUNTRY_INPUT = (By.CLASS_NAME, "select2-search__field")
     DATE_PICKER = (By.ID, "date")
-    SUBMIT = (By.ID, "submit")
+    SUBMIT_BTN = (By.ID, "submit")
     TODAY = datetime.today().strftime('%d-%m-%Y')
     # TODAY_PLUS_10 = DATE_PICKER.__getattribute__("value")
     # URL_SUBMIT = f"https://www.phptravels.net/visa/submit/ro/us/{TODAY_PLUS_10}"
@@ -34,7 +33,7 @@ class VisaPage(BasePage):
         self.browser.find_element(*VisaPage.COUNTRY_INPUT).send_keys(Keys.ARROW_DOWN)
         self.browser.find_element(*VisaPage.COUNTRY_INPUT).send_keys(Keys.ARROW_DOWN)
         self.browser.find_element(*VisaPage.COUNTRY_INPUT).send_keys(Keys.ENTER)
-        self.browser.find_element(*VisaPage.SUBMIT).click()
+        self.browser.find_element(*VisaPage.SUBMIT_BTN).click()
     
     def close(self):
         self.browser.close()
