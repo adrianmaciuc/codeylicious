@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import time
 from tests.conftest import ConfigC
 from datetime import datetime
