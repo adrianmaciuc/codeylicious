@@ -27,13 +27,13 @@ class FlightsPage(BasePage):
         self.browser.get(FlightsPage.URL)
         self.browser.maximize_window()
 
-    def insert_departure_arrival(self, locator_value, City):
-        self.browser.find_element(*locator_value).send_keys(City)
+    def insert_departure_arrival(self, locator_value, city):
+        self.browser.find_element(*locator_value).send_keys(city)
 
     def select_item(self, locator_value):
         self.browser.find_element(*locator_value).click()
     
-    def select_passenger(self, option, locator_value):
+    def select_passenger(self, option):
         dropItems = self.browser.find_elements(*FlightsPage.TICKETQTY) 
         for item in dropItems:
             if item.text == option:
