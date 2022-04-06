@@ -9,6 +9,8 @@ class ConfigC:
     PASSWORD = "demouser"
     PASSWORD_ADMIN = "demoadmin"
     REDIRECT_AFTER_LOGIN_PAGE = "https://www.phptravels.net/account/dashboard"
+    VISA_FROM_COUNTRY = "Romania"
+    VISA_TO_COUNTRY = "United Kingdom"
 
 class ConfigE:
     DRIVER_PATH = os.getcwd() + "\\resources"

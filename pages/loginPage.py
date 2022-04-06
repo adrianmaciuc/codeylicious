@@ -2,6 +2,7 @@ import time
 from selenium.webdriver.common.by import By
 
 from pages.basePage import BasePage
+from tests.conftest import ConfigC
 
 # ADI
 
@@ -35,7 +36,7 @@ class LoginPage(BasePage):
 
 if __name__ == "__main__":
     # For module testing run from Root folder (ex python pages\loginPage.py)
-    login_page = LoginPage(Config)
+    login_page = LoginPage(ConfigC)
     login_page.load()
     assert login_page.browser.title == "Login - PHPTRAVELS" , "opening of login page failed"
     login_page.login("user@phptravels.com","demouser")
