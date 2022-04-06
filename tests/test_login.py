@@ -23,7 +23,7 @@ class Test_login():
         time.sleep(2)
         assert self.login_page.browser.current_url == LoginPage.REDIRECT_AFTER_LOGIN_PAGE    
 
-    def test_loginpage_links(self):
+    def test_loginpage_contact_link(self):
         self.login_page.load()
         self.login_page.browser.find_element(*LoginPage.CONTACT_BTN).click()
         assert self.login_page.browser.current_url == "https://www.phptravels.net/contact"
