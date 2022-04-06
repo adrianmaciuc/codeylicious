@@ -1,3 +1,4 @@
+from operator import contains
 from selenium import webdriver
 import time
 from datetime import datetime
@@ -11,12 +12,12 @@ class Test_Visa:
     def setup(self):
         self.visa = VisaPage(ConfigC)
     
-    #submitting
-    def test_RO_to_US(self):
+    #submitting Visa request
+    def testSubmitCountries(self):
         self.visa.load()
-        self.visa.RO_to_US()
+        self.visa.countriesFromTo(ConfigC.VISA_FROM_COUNTRY, ConfigC.VISA_TO_COUNTRY)
         self.visa.screenshot()
-        assert self.visa.browser.current_url == VisaPage.URL_SUBMIT, "The page URL is incorrect."
+        assert "https://www.phptravels.net/visa/submit/" in self.visa.browser.current_url, "The page URL is incorrect."
 
     def teardown(self):
         self.visa.close()
