@@ -8,6 +8,7 @@ class BasePage():
             self.options = webdriver.ChromeOptions()
             self.options.add_argument('log-level=3')
             self.browser = webdriver.Chrome(options=self.options)
+            a = 2
 
         elif Configurations.BROWSER_TYPE == "Edge": 
             webdriver.edge.service.Service(Configurations.DRIVER_PATH)

@@ -1,7 +1,6 @@
-from operator import contains
 from selenium import webdriver
 import time
-from datetime import datetime
+
 from tests.conftest import ConfigC, ConfigE
 from pages.visaPage import VisaPage
 
