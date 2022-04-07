@@ -75,8 +75,11 @@ class HotelsPage(BasePage):
         element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,".select2-results__option")))
         
     
-    def close(self):
+    def custom_close(self):
         img = self.browser.find_element(*HotelsPage.NO_MATCH_SCREEN)
         source = img.get_attribute("src")
         if source == "https://www.phptravels.net/app/themes/default/assets/img/no_results.gif":
             self.broswer.close()
+
+    def close(self):
+        self.browser.close()
