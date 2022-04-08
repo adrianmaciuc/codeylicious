@@ -16,7 +16,7 @@ class FlightsPage(BasePage):
     SEARCH = (By.CSS_SELECTOR, ".ladda-label")
     DROPDOWNDEPARTURES = (By.CSS_SELECTOR, ".autocomplete-results.intro.troll")
     DROPDOWNARRIVAL = (By.CSS_SELECTOR, "._1.autocomplete-wrapper.row_2 > .autocomplete-results.intro.troll")
-    TICKETQTY = (By.CSS_SELECTOR, "#onereturn > div.col-lg-1.pr-0 > div > div > div > div > div.dropdown-item")
+    TICKETQTY = (By.CSS_SELECTOR, ".dropdown-menu > .dropdown-item")
     QTYINC = (By.CSS_SELECTOR, ".qtyInc")
     NORESULT = (By.CSS_SELECTOR, "#fadein > div.container.text-center")
 
