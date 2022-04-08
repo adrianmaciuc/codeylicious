@@ -1,9 +1,7 @@
-from ast import Try
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
-
 from pages.basePage import BasePage
 
 
@@ -16,9 +14,9 @@ class FlightsPage(BasePage):
     DATE = (By.NAME, "depart")
     PASSENGERS = (By.CSS_SELECTOR, ".dropdown-contain")
     SEARCH = (By.CSS_SELECTOR, ".ladda-label")
-    DROPDOWN = (By.CSS_SELECTOR, ".autocomplete-results.intro.troll")
-    DROPDOWN2 = (By.CSS_SELECTOR, "._1.autocomplete-wrapper.row_2 > .autocomplete-results.intro.troll")
-    TICKETQTY = (By.CSS_SELECTOR, ".dropdown-item")
+    DROPDOWNDEPARTURES = (By.CSS_SELECTOR, ".autocomplete-results.intro.troll")
+    DROPDOWNARRIVAL = (By.CSS_SELECTOR, "._1.autocomplete-wrapper.row_2 > .autocomplete-results.intro.troll")
+    TICKETQTY = (By.CSS_SELECTOR, "#onereturn > div.col-lg-1.pr-0 > div > div > div > div > div.dropdown-item")
     QTYINC = (By.CSS_SELECTOR, ".qtyInc")
     NORESULT = (By.CSS_SELECTOR, "#fadein > div.container.text-center")
 
@@ -32,7 +30,7 @@ class FlightsPage(BasePage):
 
     def select_item(self, locator_value):
         self.browser.find_element(*locator_value).click()
-    
+
     def select_passenger(self, option):
         dropItems = self.browser.find_elements(*FlightsPage.TICKETQTY) 
         for item in dropItems:
