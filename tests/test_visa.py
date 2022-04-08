@@ -13,7 +13,7 @@ class Test_Visa:
     
     #submitting Visa request
     def testSubmitCountries(self):
-        self.visa.load()
+        self.visa.load(VisaPage.URL)
         self.visa.countriesFromTo(ConfigC.VISA_FROM_COUNTRY, ConfigC.VISA_TO_COUNTRY)
         self.visa.screenshot()
         assert "https://www.phptravels.net/visa/submit/" in self.visa.browser.current_url, "The page URL is incorrect."

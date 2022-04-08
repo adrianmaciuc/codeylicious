@@ -1,4 +1,5 @@
 from selenium import webdriver
+import time
 
 
 class BasePage():
@@ -8,7 +9,6 @@ class BasePage():
             self.options = webdriver.ChromeOptions()
             self.options.add_argument('log-level=3')
             self.browser = webdriver.Chrome(options=self.options)
-            a = 2
 
         elif Configurations.BROWSER_TYPE == "Edge": 
             webdriver.edge.service.Service(Configurations.DRIVER_PATH)
@@ -18,3 +18,14 @@ class BasePage():
 
     def get_driver(self):
         return self.browser
+
+    def load(self, URL):
+        self.browser.get(URL)
+        self.browser.maximize_window()
+
+    def screenshot(self):
+        date_time = time.strftime("%a.%d.%b.%Y.%H%M%S")
+        self.browser.save_screenshot(f"resources\\screenshots\\{date_time}.png")
+
+    def close(self):
+        self.browser.quit()

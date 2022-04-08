@@ -13,7 +13,7 @@ class Test_Flights:
 
 
     def test_search(self):
-        self.flights.load()
+        self.flights.load(FlightsPage.URL)
         self.flights.insert_departure_arrival(self.flights.FLYFROM, "Cluj-Napoca")
         self.flights.select_item(self.flights.DROPDOWNDEPARTURES)
         self.flights.insert_departure_arrival(self.flights.FLYTO, "Aurel Vlaicu")
@@ -24,3 +24,6 @@ class Test_Flights:
         self.flights.select_passenger("Childs")
         self.flights.select_item(self.flights.SEARCH)
         assert True == self.flights.element_presence(self.flights.NORESULT)
+
+    def teardown(self):
+        self.flights.close()

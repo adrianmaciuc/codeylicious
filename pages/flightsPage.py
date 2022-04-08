@@ -21,10 +21,6 @@ class FlightsPage(BasePage):
     NORESULT = (By.CSS_SELECTOR, "#fadein > div.container.text-center")
 
 
-    def load(self):
-        self.browser.get(FlightsPage.URL)
-        self.browser.maximize_window()
-
     def insert_departure_arrival(self, locator_value, city):
         self.browser.find_element(*locator_value).send_keys(city)
 
