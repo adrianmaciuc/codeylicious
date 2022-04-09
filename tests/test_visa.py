@@ -1,7 +1,5 @@
-from selenium import webdriver
-import time
-
-from tests.conftest import ConfigC, ConfigE
+from pages.basePage import BasePage
+from tests.conftest import ConfigC
 from pages.visaPage import VisaPage
 
 
@@ -9,14 +7,16 @@ from pages.visaPage import VisaPage
 
 class Test_Visa:
     def setup(self):
-        self.visa = VisaPage(ConfigC)
+        self.page = BasePage(ConfigC)
     
     #submitting Visa request
     def testSubmitCountries(self):
-        self.visa.load(VisaPage.URL)
-        self.visa.countriesFromTo(ConfigC.VISA_FROM_COUNTRY, ConfigC.VISA_TO_COUNTRY)
-        self.visa.screenshot()
-        assert "https://www.phptravels.net/visa/submit/" in self.visa.browser.current_url, "The page URL is incorrect."
+        self.page.load(VisaPage.URL)
+        visa = VisaPage(self.page.browser)
+
+        visa.countriesFromTo(ConfigC.VISA_FROM_COUNTRY, ConfigC.VISA_TO_COUNTRY)
+        self.page.screenshot()
+        assert "https://www.phptravels.net/visa/submit/" in visa.browser.current_url, "The page URL is incorrect."
 
     def teardown(self):
-        self.visa.close()
+        self.page.close()
