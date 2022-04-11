@@ -24,3 +24,6 @@ class Test_Flights:
         self.flights.select_passenger("Childs")
         self.flights.select_item(self.flights.SEARCH)
         assert True == self.flights.element_presence(self.flights.NORESULT)
+
+    def teardown(self):
+        self.flights.close()
