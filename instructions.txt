@@ -1,0 +1,12 @@
+
+py.test -v -s files_path    # run all tests in specific files_path
+py.test -v -s test_mod.py py.  # run tests in module or in test file
+py.test -v -s test_module.py::test_method  # only run test_method in test_module.py
+
+-v : verbose (verbose is an argument which is used to report more information about an operation in your program )
+-s : to print statements
+
+######## Allure commands #############
+
+attach allure to test execution command: pytest --alluredir=./results -v -s
+generate allure report command: allure serve ./results < path to allure reports
