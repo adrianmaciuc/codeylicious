@@ -29,19 +29,26 @@ class HomePage(BasePage):
         self.browser.maximize_window()
     
     def link_checker(self):
+        badLinks = []
         for element in HomePage.ElementWithLink:
             # ElementWithLink is a subclass of HomePage and inherits from built-in python Enum class, that lets us treat its attributes/properties like a list
             # so we can iterate thru each one. You can access the data via ElementWithLink.name for variable and ElementWithLink.value for value
             webelement = self.browser.find_element(*element.value)
             link_to_check = webelement.get_attribute("href")
+        
             try:
-                # requests is a simple library mostly used to test API. We can use it here to test if a link returns 200 
+                # requests is a  library mostly used to test API. We can use it here to test if a link returns 200 
                 result = requests.get(link_to_check).status_code
-                if result == 200:
-                    print("link works: -> " + link_to_check)
+                if result != 200:
+                    badLinks.append(webelement)
             except:
-                print(f"following element with text '{webelement.text}' of type '{webelement.aria_role}' failed to load")
+                badLinks.append(webelement.text + " " +  webelement.aria_role)
+        if badLinks == []:
+            return True
+        else:
+            return badLinks
 
+            
     def close(self):
         self.browser.quit()
 
