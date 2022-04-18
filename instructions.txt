@@ -1,0 +1,12 @@
+
+pytest   # run all tests in specific files_path
+pytest -v -s tests/test_name.py   # run only specific test
+pytest -v -s tests/test_name.py::test_method  # only run test_method in test_name.py
+
+-v : verbose (verbose is an argument which is used to report more information)
+-s : to see the print statements in terminal
+
+######## Allure commands #############
+
+pytest --alluredir=./results -v -s       #  to execute with allure and export tests inside the folder results
+allure serve ./results        #  generate allure report and open browser to see results

@@ -45,6 +45,8 @@ class HomePage(BasePage):
             return badLinks
 
 
+
+
 if __name__ == "__main__":
     home_page = HomePage(ConfigC)
     home_page.load()
