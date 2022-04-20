@@ -27,11 +27,11 @@ class Test_Flows():
         self.page.click_on(self.page.FLIGHTS_MENU_BTN)
         flightsPage = FlightsPage(self.page.browser)
         flightsPage.insert_departure_arrival(flightsPage.FLYFROM, "Cluj-Napoca")
-        flightsPage.select_item(flightsPage.DROPDOWNDEPARTURES)
+        self.page.click_on(flightsPage.DROPDOWNDEPARTURES)
         flightsPage.insert_departure_arrival(flightsPage.FLYTO, "Aurel Vlaicu")
-        flightsPage.select_item(flightsPage.DROPDOWNARRIVAL)
-        flightsPage.select_item(flightsPage.PASSENGERS)
-        flightsPage.select_item(flightsPage.SEARCH)
+        self.page.click_on(flightsPage.DROPDOWNARRIVAL)
+        self.page.click_on(flightsPage.PASSENGERS)
+        self.page.click_on(flightsPage.SEARCH)
 
         assert True == flightsPage.element_presence(flightsPage.NORESULT)
 

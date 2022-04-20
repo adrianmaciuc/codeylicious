@@ -20,6 +20,3 @@ class LoginPage():
         self.browser.find_element(*LoginPage.EMAIL_INPUT).send_keys(username)
         self.browser.find_element(*LoginPage.PASSWORD_INPUT).send_keys(password)
         self.browser.find_element(*LoginPage.LOGIN_BTN).click()
-
-    def click_on(self, element):
-        self.browser.find_element(*element).click()

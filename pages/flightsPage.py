@@ -25,9 +25,6 @@ class FlightsPage():
     def insert_departure_arrival(self, locator_value, city):
         self.browser.find_element(*locator_value).send_keys(city)
 
-    def select_item(self, locator_value):
-        self.browser.find_element(*locator_value).click()
-
     def select_passenger(self, option):
         dropItems = self.browser.find_elements(*FlightsPage.TICKETQTY) 
         for item in dropItems:
@@ -41,9 +38,3 @@ class FlightsPage():
         except NoSuchElementException:
             visibility = False
         return visibility
-
-    def wait_for_element(self, locator_value):
-        return WebDriverWait(self.browser, 20).until(ec.element_to_be_clickable((locator_value)))
-
-    def close(self):
-        self.browser.close()

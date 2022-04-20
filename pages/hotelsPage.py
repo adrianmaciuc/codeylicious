@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import Select
 
 # Norbert 
 
-class HotelsPage(BasePage):
+class HotelsPage():
     URL = "https://www.phptravels.net/hotels"
     CITY_NAME= (By.CSS_SELECTOR, ".select2-selection")
     CITY_NAME_SEARCH =(By.CSS_SELECTOR, ".select2-search__field")
@@ -28,11 +28,8 @@ class HotelsPage(BasePage):
     #Nationalities se poate scoate, a fost lasat doar pentru practice for myself.
     #A fost doar asa sa fac indexare sa ma "re-obisnuiesc" ca parametrii pot fi si de genul
 
-
-
-    def load(self):
-        self.browser.get(HotelsPage.URL)
-        self.browser.maximize_window()
+    def __init__(self, driver):
+        self.browser = driver 
 
     def date_picker_checkin(self, ziua):
         self.browser.find_element(*HotelsPage.CHECK_IN).click()
@@ -80,6 +77,3 @@ class HotelsPage(BasePage):
         source = img.get_attribute("src")
         if source == "https://www.phptravels.net/app/themes/default/assets/img/no_results.gif":
             self.broswer.close()
-
-    def close(self):
-        self.browser.close()

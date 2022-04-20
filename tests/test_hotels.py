@@ -3,16 +3,18 @@ import time
 
 from tests.conftest import ConfigC, ConfigE
 from pages.hotelsPage import HotelsPage
+from pages.basePage import BasePage
 
 
     # Norbert
 
 class Test_Hotels:
     def setup(self):
-        self.hotels = HotelsPage(ConfigC)
+        self.page = BasePage(ConfigC)
 
 
     def test_booking_hotels(self):
+        self.hotels = HotelsPage(self.page.browser)
         self.hotels.load()
         self.hotels.search_city('Cluj-Napoca')
         self.hotels.date_picker_checkin('15')

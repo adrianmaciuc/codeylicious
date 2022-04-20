@@ -27,6 +27,3 @@ class VisaPage():
 
     def getAttrValue(self, element, atribut):
         return self.browser.find_element(*element).get_attribute(atribut)
-
-    def click_on(self, element):
-        self.browser.find_element(*element).click()
