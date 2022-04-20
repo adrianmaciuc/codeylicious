@@ -1,16 +1,13 @@
-from selenium import webdriver
-import time
-from tests.conftest import ConfigC, ConfigE
+from tests.conftest import ConfigC
+from pages.basePage import BasePage
 from pages.flightsPage import FlightsPage
-
 
 
     # Catalin
 
 class Test_Flights:
     def setup(self):
-        self.flights = FlightsPage(ConfigC)
-
+        self.page = BasePage(ConfigC)
 
     def test_search(self):
         self.flights.load(FlightsPage.URL)
@@ -26,4 +23,4 @@ class Test_Flights:
         assert True == self.flights.element_presence(self.flights.NORESULT)
 
     def teardown(self):
-        self.flights.close()
+        self.page.close()
