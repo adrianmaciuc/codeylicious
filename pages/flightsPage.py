@@ -44,3 +44,6 @@ class FlightsPage():
 
     def wait_for_element(self, locator_value):
         return WebDriverWait(self.browser, 20).until(ec.element_to_be_clickable((locator_value)))
+
+    def close(self):
+        self.browser.close()
