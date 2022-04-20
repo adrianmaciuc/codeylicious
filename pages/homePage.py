@@ -1,14 +1,10 @@
-from xml.dom.minidom import Element
 from selenium.webdriver.common.by import By
-import time, requests
+import requests
 from enum import Enum
-
-from pages.basePage import BasePage
-from tests.conftest import ConfigC
 
 # ADI
 
-class HomePage(BasePage):
+class HomePage():
     URL = "https://www.phptravels.net"
 
     class ElementWithLink(Enum):
@@ -17,18 +13,16 @@ class HomePage(BasePage):
         FLIGHTS_HEADER_MENU_BTN = (By.LINK_TEXT, "Flights")
         TOURS_HEADER_MENU_BTN = (By.LINK_TEXT, "Tours")
         VISA_HEADER_MENU_BTN = (By.LINK_TEXT, "Visa")
-        NO_LINK = (By.CSS_SELECTOR, "button#languages")
         BLOG_HEADER_MENU_BTN = (By.LINK_TEXT, "Blog")
         OFFERS_HEADER_MENU_BTN = (By.LINK_TEXT, "Offers")
         COMPANY_HEADER_MENU_BTN = (By.LINK_TEXT, "Company")
         SIGNUP_TOP_BTN = (By.CSS_SELECTOR, ".header-right > [href*='signup']")
-        
 
-    def load(self):
-        self.browser.get(self.URL)
-        self.browser.maximize_window()
-    
-    def link_checker(self):
+
+    def __init__(self, driver):
+        self.browser = driver 
+
+    def home_page_link_checker(self):
         badLinks = []
         for element in HomePage.ElementWithLink:
             # ElementWithLink is a subclass of HomePage and inherits from built-in python Enum class, that lets us treat its attributes/properties like a list
@@ -47,20 +41,3 @@ class HomePage(BasePage):
             return True
         else:
             return badLinks
-
-            
-    def close(self):
-        self.browser.quit()
-
-    def screenshot(self):
-        date_time = time.strftime("%a.%d.%b.%Y.%H%M%S")
-        self.browser.save_screenshot(f"resources\\screenshots\\{date_time}.png")
-
-    def get_driver(self):
-        return self.browser
-
-
-if __name__ == "__main__":
-    home_page = HomePage(ConfigC)
-    home_page.load()
-    home_page.link_checker()

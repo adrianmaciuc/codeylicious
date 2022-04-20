@@ -2,12 +2,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
-from pages.basePage import BasePage
 
 
 # CATALIN 
 
-class FlightsPage(BasePage):
+class FlightsPage():
     URL = "https://www.phptravels.net/flights"
     FLYFROM = (By.NAME, "from")
     FLYTO = (By.NAME, "to")
@@ -20,10 +19,8 @@ class FlightsPage(BasePage):
     QTYINC = (By.CSS_SELECTOR, ".qtyInc")
     NORESULT = (By.CSS_SELECTOR, "#fadein > div.container.text-center")
 
-
-    def load(self):
-        self.browser.get(FlightsPage.URL)
-        self.browser.maximize_window()
+    def __init__(self, driver):
+        self.browser = driver
 
     def insert_departure_arrival(self, locator_value, city):
         self.browser.find_element(*locator_value).send_keys(city)
