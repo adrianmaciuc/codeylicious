@@ -18,7 +18,6 @@ class HomePage():
         COMPANY_HEADER_MENU_BTN = (By.LINK_TEXT, "Company")
         SIGNUP_TOP_BTN = (By.CSS_SELECTOR, ".header-right > [href*='signup']")
 
-
     def __init__(self, driver):
         self.browser = driver 
 
