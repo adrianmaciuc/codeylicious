@@ -33,20 +33,20 @@ class HotelsPage():
 
     def date_picker_checkin(self, ziua):
         self.browser.find_element(*HotelsPage.CHECK_IN).click()
-        datepicker =self.browser.find_element(*HotelsPage.CHECK_IN_DATEPICKER)
-        datepicker_days= datepicker.find_elements(By.CSS_SELECTOR, ".day")
+        datepicker = WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".datepicker")))
+        datepicker_days= datepicker.find_elements(By.CSS_SELECTOR, ".day:not(.disabled)")
         for zile in datepicker_days:
-            if ziua == zile.text:
-                zile.find_element(By.CSS_SELECTOR, ".day").click()
+            if zile.text == ziua:
+                zile.click()
+                break
 
     ## ZIUA CAND O BAG TREBUIE SA FIE STRING NU INT
     def date_picker_checkout(self, ziua):
-        self.browser.find_element(*HotelsPage.CHECK_OUT).click()
-        datepicker = self.browser.find_element(*HotelsPage.CHECK_OUT_DATEPICKER)
-        datepicker_days= datepicker.find_elements(By.CSS_SELECTOR, ".day")
+        datepicker_days= self.browser.find_elements(By.CSS_SELECTOR, ".day:not(.disabled)")
         for zile in datepicker_days:
-            if ziua == zile.text:
-                zile.find_element(By.CSS_SELECTOR, ".day").click()
+            if zile.text == ziua:
+                zile.click()
+                break
     
     ## ZIUA CAND O BAG TREBUIE SA FIE STRING NU INT
     def travellers_choice(self, type0):
@@ -67,9 +67,8 @@ class HotelsPage():
     def search_city(self, city):
         self.browser.find_element(*HotelsPage.CITY_NAME).click()
         self.browser.find_element(*HotelsPage.CITY_NAME_SEARCH).send_keys(city)
-        # self.browser.find_element(*HotelsPage.CITY_SELECT).click()
-        wait = WebDriverWait(self.browser, 5)
-        element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,".select2-results__option")))
+        element = WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,".select2-results__option--highlighted")))
+        element.click()
         
     
     def custom_close(self):
